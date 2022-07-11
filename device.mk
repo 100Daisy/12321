@@ -330,6 +330,7 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     init.daisy.rc \
     fstab.qcom \
+    fstab_ramdisk.qcom \
     init.msm.usb.configfs.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
