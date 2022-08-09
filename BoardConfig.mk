@@ -26,7 +26,7 @@ BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci earlycon=msm_hsl_uart,0x78af000 androidboot.usbconfigfs=true
-BOARD_KERNEL_CMDLINE += androidboot.android_dt_dir=/non-existent androidboot.boot_devices=soc/7824900.sdhci
+BOARD_KERNEL_CMDLINE += androidboot.android_dt_dir=/non-existent androidboot.boot_devices=soc/7824900.sdhci androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_CONFIG := sleepy_defconfig
 BOARD_KERNEL_PAGESIZE :=  2048
@@ -123,8 +123,6 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_daisy
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2684354560
-BOARD_VENDORIMAGE_PARTITION_SIZE := 805306368
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 33554432
 BOARD_HAS_REMOVABLE_STORAGE := true
 BOARD_USES_RECOVERY_AS_BOOT := true
@@ -134,6 +132,12 @@ BOARD_ROOT_EXTRA_SYMLINKS := \
     /vendor/dsp:/dsp \
     /vendor/firmware_mnt:/firmware \
     /mnt/vendor/persist:/persist
+
+BOARD_SUPER_PARTITION_SIZE := 6979321856
+
+BOARD_SUPER_PARTITION_GROUPS := example_dynamic_partitions
+BOARD_EXAMPLE_DYNAMIC_PARTITIONS_SIZE := 3489136640
+BOARD_EXAMPLE_DYNAMIC_PARTITIONS_PARTITION_LIST := system vendor
 
 # Power
 TARGET_USES_INTERACTION_BOOST := true
